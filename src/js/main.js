@@ -18,9 +18,12 @@ function updateDots() {
     dot.style.background =
       index < passcode.length ? "white" : "rgba(255, 255, 255, 0.5)";
   });
-  if (passcode.length == 6) {
-    if (passcode === "123456") {
+  if (passcode.length == 4) {
+    if (passcode === "0105") {
       document.getElementById("message").textContent = "Te acordaste!";
+      setTimeout(() => {
+        
+      }, 1000);
     } else {
       document.getElementById("message").textContent = "Código incorrecto!";
       setTimeout(() => {
@@ -28,7 +31,7 @@ function updateDots() {
           "Una pista: Nuestra primera cita";
         passcode = "";
         updateDots();
-      }, 1000);
+      }, 2000);
     }
   }
 }
