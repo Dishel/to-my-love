@@ -1,12 +1,159 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Comenzando</title>
-  <meta http-equiv="refresh" content="0; url=unlock/">
-</head>
-<body>
-  
-</body>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>To My Love</title>
+    <link href="src/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="src/css/main.css" />
+  </head>
+  <body>
+    <!-- START -->
+    <div id="audio">
+      <audio id="bg-music" loop>
+        <source src="src/audio/Reik - Pero Te Conocí.mp3" type="audio/mpeg" />
+      </audio>
+      <button
+        class="btn border border-light-subtle px-6 py-2 m-5 rounded-pill"
+        onclick="playMusic()"
+      >
+        Empecemos!
+      </button>
+    </div>
+    <!-- UNLOCK SCREEN -->
+    <div class="unlock d-none">
+      <div class="lockscreen">
+        <i class="bi bi-lock-fill"></i>
+        <div class="date" id="date"></div>
+        <div class="time" id="time"></div>
+        <div class="container text-center mt-5">
+          <p id="message">Desbloquéame</p>
+          <div class="d-flex justify-content-center">
+            <div class="m-1 dot"></div>
+            <div class="m-1 dot"></div>
+            <div class="m-1 dot"></div>
+            <div class="m-1 dot"></div>
+          </div>
+          <div class="container">
+            <div class="row justify-content-center row-cols-3" id="keypad">
+              <div class="col g-3"><button>1</button></div>
+              <div class="col g-3"><button>2</button></div>
+              <div class="col g-3"><button>3</button></div>
+              <div class="col g-3"><button>4</button></div>
+              <div class="col g-3"><button>5</button></div>
+              <div class="col g-3"><button>6</button></div>
+              <div class="col g-3"><button>7</button></div>
+              <div class="col g-3"><button>8</button></div>
+              <div class="col g-3"><button>9</button></div>
+              <div class="col g-3"><button>0</button></div>
+            </div>
+          </div>
+        </div>
+        <div class="bottom-icons">
+          <span class="icon" id="delete">Eliminar</span>
+        </div>
+        <hr />
+      </div>
+    </div>
+    <!-- SEARCH -->
+    <div id="search" class="d-none">
+      <div class="text-center mb-3">
+        <img
+          src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_92x30dp.png"
+          alt="Google Logo"
+        />
+      </div>
+      <div
+        class="search-container d-flex justify-content-between align-items-center gap-3 py-2 border rounded-pill"
+      >
+        <i class="bi bi-search ms-3 text-secondary"></i>
+        <input
+          type="text"
+          id="searchInput"
+          class="search-bar form-control flex-fill"
+          placeholder="Busca lo más importante"
+        />
+        <i class="bi bi-mic text-primary"></i>
+        <i class="bi bi-camera me-3 text-primary"></i>
+      </div>
+      <p class="text-muted hint d-none">
+        <small>Tip: intenta buscar "<strong>Cuánto tiempo llevamos juntos?</strong>" :)</small>
+      </p>
+      <button class="btn bg-body-secondary submit">
+        Buscar en tu corazon <i class="bi bi-heart-fill text-danger mx-2"></i>
+      </button>
+      <div class="search-results container ps-4" id="results">
+        <h4 class="text-muted">Busquedas recomendadas</h4>
+        <p class="m-0 mt-4">
+          <span class="bi bi-search-heart me-3"></span> Por que mi esposo es tan
+          guapo?
+        </p>
+        <p class="m-0 mt-3">
+          <span class="bi bi-search-heart me-3"></span> Porque Dishel me ama
+          tanto?
+        </p>
+        <p class="m-0 mt-3">
+          <span class="bi bi-search-heart me-3"></span> Cumpleaños de Dishel
+        </p>
+      </div>
+    </div>
+    <!-- TIMER -->
+    <div
+      id="timer"
+      class="text-center d-flex flex-column justify-content-center align-items-center d-none"
+    >
+      <h5 class="fw-bold mb-5">Hemos estado juntos por:</h5>
+      <div
+        id="counter"
+        class="text-center container justify-content-center align-items-center gap-3 fw-bold row"
+      >
+        <div
+          class="col justify-content-center border-end border-secondary-subtle"
+        >
+          <p class="fw-bolder m-0" id="days"></p>
+          <p class="fs-6 m-0">dias</p>
+        </div>
+        <div
+          class="col justify-content-center border-end border-secondary-subtle"
+        >
+          <p class="fw-bolder m-0" id="hours"></p>
+          <p class="fs-6 m-0">horas</p>
+        </div>
+        <div
+          class="col justify-content-center border-end border-secondary-subtle"
+        >
+          <p class="fw-bolder m-0" id="minutes"></p>
+          <p class="fs-6 m-0">minutos</p>
+        </div>
+        <div class="col justify-content-center">
+          <p class="fw-bolder m-0" id="seconds"></p>
+          <p class="fs-6 m-0">segundos</p>
+        </div>
+      </div>
+      <button class="btn border border-light-subtle px-6 py-2 m-5 next">
+        Siguiente página <i class="bi bi-arrow-right"></i>
+      </button>
+    </div>
+    <!-- LETTER -->
+    <div class="envelope-container d-none" onclick="toggleLetter()">
+      <div class="envelope rounded shadow">
+        <div class="letter p-3">
+          <div class="text">
+            <strong style="font-size: 0.89rem">Querida Victoria,</strong>
+            <p style="text-indent: 15px">
+              Feliz día de San Valentin. Gracias por ser la compañera más
+              increíble que alguien podría pedir. Significas todo para mí.
+            </p>
+            <p class="text-center"><strong>TE AMO MUCHO</strong></p>
+            <div class="text-center mt-3">
+              <img src="src/img/heartarrow.svg" alt="" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="src/js/bootstrap.bundle.min.js"></script>
+    <script src="src/js/main.js"></script>
+  </body>
 </html>
